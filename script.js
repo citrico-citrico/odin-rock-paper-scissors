@@ -33,9 +33,10 @@ function playRound(humanChoice, computerChoice){
 }
 
 function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-    while(computerScore == 5 && humanScore == 5){
+        let humanScore = 0;
+        let computerScore = 0;
+    
+    do{
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
@@ -47,18 +48,19 @@ function playGame(){
         }
         console.log("Your Score: " + humanScore);
         console.log("Computer Score: " + computerScore);
-    }
+    } while(computerScore != 5 && humanScore != 5)
     
-    if(humanScore > computerScore){
-            console.log("You win!");
-        } else if (humanScore < computerScore){
-            console.log("The computer wins!");
-        } else {
-            console.log("Its a tie!");
-        }
+        if(humanScore > computerScore){
+                console.log("You win!");
+            } else if (humanScore < computerScore){
+                console.log("The computer wins!");
+            } else {
+                console.log("Its a tie!");
+            }
 
 }
 
+   
 playGame();
 
 
