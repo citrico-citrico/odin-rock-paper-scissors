@@ -12,13 +12,15 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    const humanChoice = prompt("Input your choice ");
-    return humanChoice;
+    
+
+    rockOption.addEventListener("click", () => {
+        return "rock";
+    })
+   
 }
 
 function playRound(humanChoice, computerChoice){
-    humanChoice = humanChoice.toLowerCase();
-
     if(humanChoice == computerChoice){
         alert("Tie! You both chose " + computerChoice)
     } else if ((humanChoice == "rock" && computerChoice == "paper") || 
@@ -60,8 +62,12 @@ function playGame(){
 
 }
 
+const rockOption = document.querySelector("rock");
+const paperOption = document.querySelector("#paper");
+const scissorsOption = document.querySelector("#scissors");
    
-playGame();
+//playGame();
+getHumanChoice();
 
 
 
