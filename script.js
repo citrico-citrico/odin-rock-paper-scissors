@@ -27,46 +27,47 @@ function playRound(humanChoice){
     }
 }
 
-function playGame(){
-        let humanScore = 0;
-        let computerScore = 0;
-    
-    do{
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        let roundWinner = playRound(humanSelection, computerSelection);
-        if(roundWinner == "computer"){
+function validateResults(winner){
+        if(winner == "computer"){
             ++computerScore;
-        } else if(roundWinner == "human"){
+        } else if(winner == "human"){
             ++humanScore;
         }
-        console.log("Your Score: " + humanScore);
-        console.log("Computer Score: " + computerScore);
-    } while(computerScore != 5 && humanScore != 5)
     
-        if(humanScore > computerScore){
-                console.log("You win!");
-            } else if (humanScore < computerScore){
-                console.log("The computer wins!");
-            } else {
-                console.log("Its a tie!");
-            }
+        if(computerScore == 5){
+            alert("You lost! The computer has won 5 rounds")
+        } else if(humanScore == 5){
+            alert("Congratulations, you are a winner!. You have won 5 rounds")
+        }
+    }
 
-}
 
-const rockOption = document.querySelector("#rock");
-const paperOption = document.querySelector("#paper");
-const scissorsOption = document.querySelector("#scissors");
    
 const playerOptions = document.querySelectorAll("button");
+const humanScoreCounter = document.querySelector("#human");
+const computerScoreCounter = document.querySelector("#computer");
+
+
+let humanScore = 0;
+let computerScore = 0;
+
+
+
+
 
 playerOptions.forEach((button) => {
     button.addEventListener("click", () => {
+        event.preventDefault();
         const userInput = button.id;
         const winner = playRound(userInput);
         validateResults(winner);
-    });
+
+     humanScoreCounter.textContent = "Human score: " + humanScore;
+     computerScoreCounter.textContent = "Computer Score: " + computerScore;
+    }); 
 });
+
+
+                        
 
 
